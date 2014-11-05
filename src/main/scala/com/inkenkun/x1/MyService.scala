@@ -1,4 +1,4 @@
-package com.example
+package com.inkenkun.x1
 
 import akka.actor.Actor
 import spray.routing._
@@ -16,7 +16,7 @@ class MyServiceActor extends Actor with MyService {
   // this actor only runs our route, but you could add
   // other things here, like request stream processing
   // or timeout handling
-  def receive = runRoute(myRoute)
+  def receive = runRoute( myRoute )
 }
 
 
@@ -24,9 +24,9 @@ class MyServiceActor extends Actor with MyService {
 trait MyService extends HttpService {
 
   val myRoute =
-    path("") {
+    path( "" ) {
       get {
-        respondWithMediaType(`text/html`) { // XML is marshalled to `text/xml` by default, so we simply override here
+        respondWithMediaType( `text/html` ) { // XML is marshalled to `text/xml` by default, so we simply override here
           complete {
             <html>
               <body>
