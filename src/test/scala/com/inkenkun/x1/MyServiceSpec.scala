@@ -1,4 +1,4 @@
-package com.example
+package com.inkenkun.x1
 
 import org.specs2.mutable.Specification
 import spray.testkit.Specs2RouteTest
