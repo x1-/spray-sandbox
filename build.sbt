@@ -1,4 +1,4 @@
-organization  := "com.example"
+organization  := "com.inkenkun.x1"
 
 version       := "0.1"
 
@@ -22,3 +22,4 @@ libraryDependencies ++= {
 }
 
 Revolver.settings
+
