@@ -5,6 +5,7 @@ import spray.routing._
 import spray.http._
 import MediaTypes._
 
+import scala.math.BigDecimal
 import scala.xml.Elem
 
 // we don't implement our route structure directly in the service actor because
@@ -25,6 +26,8 @@ class MyServiceActor extends Actor with MyService {
 // this trait defines our service behavior independently from the service actor
 trait MyService extends HttpService {
 
+  lazy val regTest = "naskuadnf,man3.0,mn,wnerk5.5.1snerwkej jkqwjekqjwn,mn,mn,nhuhb./..qweojndabsdiu8123nns,dfkjpa123hsjdnfuy764nlikweqoiwnvbhwergjwerlkm,n,mn,czhuwy4734yhwk,sfs021k23;slkkf:pqwje90o3j42k,msdv^ok,ne,mansmdnauy23mk"
+
   val myRoute =
     path( "" ) {
       get {
@@ -41,6 +44,18 @@ trait MyService extends HttpService {
         formFields( 'todo ) { todo =>
           Todos.add( todo )
           addPage
+        }
+      }
+    } ~
+    path( "test" ) {
+      get {
+        val digit = "\\d+(\\.\\d+)?".r
+        val digits = digit.findAllMatchIn( regTest ).map{ p =>
+          println( p.group(0) + ":" + p.group(1) )
+          BigDecimal( p.group(1) )
+        }
+        respondWithMediaType( `text/html` ) {
+          complete( index )
         }
       }
     }
